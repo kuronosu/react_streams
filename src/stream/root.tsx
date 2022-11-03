@@ -48,7 +48,7 @@ const StreamWatcher = ({ children }: ChildrenProps) => {
   const { streams, setStreams } = useContext(StreamsContext);
   useEffect(() => {
     Object.keys(StreamCallbacks.callbacks).forEach((name) => {
-      if (streams[name]) {
+      if (streams[name] !== null && streams[name] !== undefined) {
         StreamCallbacks.notify(name, streams[name]);
         setStreams((prev) => ({ ...prev, [name]: null }));
       }
